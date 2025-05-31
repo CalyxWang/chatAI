@@ -1,0 +1,27 @@
+{
+  "version": 2,
+  "builds": [
+    {
+      "src": "server.js",
+      "use": "@vercel/node"
+    }
+  ],
+  "routes": [
+    {
+      "src": "/api/(.*)",
+      "dest": "/server.js"
+    },
+    {
+      "src": "/(.*)",
+      "dest": "/server.js"
+    }
+  ],
+  "env": {
+    "VOLC_API_KEY": "@volc_api_key",
+    "VOLC_MODEL_ID": "@volc_model_id",
+    "VOLC_API_URL": "@volc_api_url",
+    "API_TIMEOUT": "@api_timeout",
+    "API_TEMPERATURE": "@api_temperature",
+    "API_STREAM": "@api_stream"
+  }
+}

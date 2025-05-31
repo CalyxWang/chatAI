@@ -12,13 +12,24 @@ const PORT = process.env.PORT || 3000;
 
 // 火山方舟API配置
 const API_CONFIG = {
-    url: 'https://ark.cn-beijing.volces.com/api/v3/chat/completions',
-    apiKey: '02d28e09-b9d4-4123-b790-be8d9b7f02a9',
-    model: 'ep-20250527195458-cjjmp',
-    timeout: 60000, // 60秒超时
-    temperature: 0.6,
-    stream: true
+    url: process.env.VOLC_API_URL || 'https://ark.cn-beijing.volces.com/api/v3/chat/completions',
+    apiKey: process.env.VOLC_API_KEY,
+    model: process.env.VOLC_MODEL_ID,
+    timeout: parseInt(process.env.API_TIMEOUT) || 60000, // 60秒超时
+    temperature: parseFloat(process.env.API_TEMPERATURE) || 0.6,
+    stream: process.env.API_STREAM === 'true' || true
 };
+
+// 验证必需的环境变量
+if (!API_CONFIG.apiKey) {
+    console.error('❌ 错误: 缺少必需的环境变量 VOLC_API_KEY');
+    process.exit(1);
+}
+
+if (!API_CONFIG.model) {
+    console.error('❌ 错误: 缺少必需的环境变量 VOLC_MODEL_ID');
+    process.exit(1);
+}
 
 // 中间件配置
 app.use(cors({
