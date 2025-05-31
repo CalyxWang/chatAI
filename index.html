@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <!-- 页面基础信息设置 -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Life Coach - 你的专属生活教练</title>
+    
+    <!-- 引入外部样式文件 -->
+    <link rel="stylesheet" href="styles.css">
+    
+    <!-- 页面图标设置 -->
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🤖</text></svg>">
+</head>
+<body>
+    <!-- 主容器 -->
+    <div class="container">
+        <!-- 页面头部区域 -->
+        <header class="header">
+            <div class="header-content">
+                <h1 class="title">
+                    <span class="icon">🤖</span>
+                    AI Life Coach
+                </h1>
+                <p class="subtitle">你的专属AI生活教练，陪伴你成长每一天</p>
+            </div>
+        </header>
+
+        <!-- 主要内容区域 -->
+        <main class="main-content">
+            <!-- 聊天消息显示区域 -->
+            <div class="chat-container">
+                <div class="chat-messages" id="chatMessages">
+                    <!-- 欢迎消息 -->
+                    <div class="message ai-message">
+                        <div class="message-avatar">
+                            <span class="avatar-icon">🤖</span>
+                        </div>
+                        <div class="message-content">
+                            <div class="message-text">
+                                你好！我是你的AI生活教练。我会倾听你的想法，了解你的困惑，并为你提供个性化的建议和指导。无论是职业发展、人际关系、个人成长还是生活规划，我都会陪伴你一起探索和成长。
+                                <br><br>
+                                请告诉我，今天有什么想要分享或讨论的吗？
+                            </div>
+                            <div class="message-time">刚刚</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 消息输入区域 -->
+            <div class="input-container">
+                <div class="input-wrapper">
+                    <!-- 文本输入框 -->
+                    <textarea 
+                        id="messageInput" 
+                        class="message-input" 
+                        placeholder="在这里输入你的想法和问题..."
+                        rows="1"
+                        maxlength="1000"
+                    ></textarea>
+                    
+                    <!-- 发送按钮 -->
+                    <button id="sendButton" class="send-button" type="button">
+                        <span class="send-icon">📤</span>
+                        <span class="send-text">发送</span>
+                    </button>
+                </div>
+                
+                <!-- 输入提示信息 -->
+                <div class="input-hint">
+                    <span class="hint-text">按 Enter 发送，Shift + Enter 换行</span>
+                    <span class="char-count">
+                        <span id="charCount">0</span>/1000
+                    </span>
+                </div>
+            </div>
+        </main>
+
+        <!-- 加载状态指示器 -->
+        <div class="loading-indicator" id="loadingIndicator">
+            <div class="loading-dots">
+                <span class="dot"></span>
+                <span class="dot"></span>
+                <span class="dot"></span>
+            </div>
+            <span class="loading-text">AI正在思考中...</span>
+        </div>
+
+        <!-- 错误提示区域 -->
+        <div class="error-message" id="errorMessage">
+            <div class="error-content">
+                <span class="error-icon">⚠️</span>
+                <span class="error-text"></span>
+                <button class="error-close" onclick="hideError()">✕</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- 引入JavaScript文件 -->
+    <script src="script.js"></script>
+</body>
+</html>
